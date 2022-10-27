@@ -17,7 +17,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+	compile "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.17"
 }
 
 apply plugin: "com.jfrog.artifactory"
