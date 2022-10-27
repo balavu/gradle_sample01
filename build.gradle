@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
+	id 'maven-publish'
 }
 
 group = 'com.demo'
@@ -10,12 +11,16 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
 }
+
+apply plugin: "com.jfrog.artifactory"
 
 tasks.named('test') {
 	useJUnitPlatform()
@@ -31,7 +36,7 @@ artifactory {
             maven = true
 	    }
         defaults {
-            publiscations('mavenJava')
+            publications('mavenJava')
             publishArtifacts = true
             publishPom = true
         }
