@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
+    id "com.jfrog.artifactory"
 }
 
 group = 'com.demo'
@@ -15,8 +16,37 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
+    publish {
+        repository {
+            repoKey = 'gradle-dev-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+	    }
+        defaults {
+            publiscations('mavenJava')
+            publishArtifacts = true
+            publishPom = true
+        }
+	}   
+}	
+
+resolve {
+        repository {
+            repoKey = 'gradle-dev'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+            
+        }
 }
