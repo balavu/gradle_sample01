@@ -2,7 +2,6 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
-    id "com.jfrog.artifactory"
 }
 
 group = 'com.demo'
@@ -18,7 +17,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
 }
-
+apply plugin: "com.jfrog.artifactory"
 
 tasks.named('test') {
 	useJUnitPlatform()
