@@ -14,14 +14,12 @@ plugins {
 	id 'java'
     	id 'maven-publish'
 }
-allprojects {
-    repositories {
+repositories {
         maven {
             url "http://35.92.201.109:8081/artifactory/gradle-dev/"
         }
     }
-}
-
+    
 group = 'com.demo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
