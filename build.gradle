@@ -34,12 +34,14 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+    repositories {
+        maven {
+            url "http://35.92.201.109:8081/artifactory/gradle-dev/"
+	    allowInsecureProtocol =true
         }
     }
 }
+
 artifactory {
     contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
     publish {
@@ -51,7 +53,7 @@ artifactory {
             
         }
         defaults {
-            publications('mavenJava')
+            publications('maven')
             publishArtifacts = true
             publishPom = true
         }
