@@ -1,3 +1,9 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+    	id 'maven-publish'
+}
 buildscript {
   repositories {
     maven {
@@ -8,6 +14,7 @@ buildscript {
     classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.20.0"
   }
 }
+
 allprojects {
     repositories {
         maven {
@@ -15,17 +22,12 @@ allprojects {
         }
     }
 }
-plugins {
-	id 'org.springframework.boot' version '2.7.1'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-	id 'java'
-	id 'maven-publish'
-	id "com.jfrog.artifactory" version "4.20.0"
-}
 
 group = 'com.demo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+apply plugin: 'com.jfrog.artifactory'
 
 repositories {
 	mavenCentral()
