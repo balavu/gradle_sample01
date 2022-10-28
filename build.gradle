@@ -3,10 +3,6 @@ buildscript {
     maven {
       url "https://plugins.gradle.org/m2/"
       }
-     maven {
-      url "http://35.92.201.109:8081/artifactory/gradle-dev/"
-      allowInsecureProtocol = true  
-    }
   }
   dependencies {
     classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.20.0"
@@ -60,13 +56,5 @@ artifactory {
             publishPom = true
         }
     }
-    resolve {
-        repository {
-            repoKey = 'gradle-dev'
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-            maven = true
-            
-        }
-    }
+    
 }
