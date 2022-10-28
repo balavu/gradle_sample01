@@ -17,10 +17,7 @@ plugins {
 repositories {
         maven {
             url "http://35.92.201.109:8081/artifactory/gradle-dev/"
-	    credentials {
-            username = 'admin'
-            password = 'Admin@1234'
-        }
+	    allowInsecureProtocol = true
         }
     }
     
